@@ -1,5 +1,5 @@
 export class BottleSong {
-  getVerse(verse: number) {
+  getVerse(verse: number): string {
     const numberOfBottlesMinusOne = verse - 1
     if (verse > 2) {
       return `${verse} bottles of beer on the wall, ${verse} bottles of beer.
@@ -14,5 +14,15 @@ Take it down and pass it around, no more bottles of beer on the wall.`
       return `No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.`
     }
+  }
+
+  sing(startVerse: number, endVerse: number): string {
+    let resultSong: string = ``
+
+    for (let i = startVerse; i >= endVerse; i--) {
+      resultSong = resultSong + this.getVerse(i) + `\n`
+    }
+
+    return resultSong
   }
 }
