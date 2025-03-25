@@ -14,6 +14,9 @@ describe('Caesar Cipher', () => {
   test('given a an upper case letter should return upper case letter', () => {
     expect(caesarCipher('A', 1)).toBe('B')
   })
+  test('given a number greater than alphabet letters', () => {
+    expect(caesarCipher('A', 27)).toBe('B')
+  })
   //   test('given a sequence, with a letter and a character should return the ciphered text with character', () => {
   //     const sentence = 'I!'
   //     expect(caesarCipher(sentence, 1)).toBe('J!')
