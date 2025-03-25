@@ -2,16 +2,21 @@ const MINUS_ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const UPPER_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 export function caesarCipher(str: string, shift: number) {
-  if (!MINUS_ALPHABET.includes(str[0].toLowerCase())) {
-    return str
-  }
+  const sequence = str.split('')
 
-  const cipheredText =
-    str[0] === str[0].toLowerCase()
-      ? MINUS_ALPHABET[getIndexOfCiphered(MINUS_ALPHABET, str[0], shift)]
-      : UPPER_ALPHABET[getIndexOfCiphered(UPPER_ALPHABET, str[0], shift)]
+  const cipher = sequence.map(character => {
+    if (!MINUS_ALPHABET.includes(character.toLowerCase())) {
+      return character
+    }
 
-  return cipheredText
+    const cipheredLetter =
+      character === character.toLowerCase()
+        ? MINUS_ALPHABET[getIndexOfCiphered(MINUS_ALPHABET, character, shift)]
+        : UPPER_ALPHABET[getIndexOfCiphered(UPPER_ALPHABET, character, shift)]
+    return cipheredLetter
+  })
+
+  return cipher.join('')
 }
 
 function getIndexOfCiphered(alphabet: string[], letter: string, shift: number) {
