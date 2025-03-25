@@ -18,6 +18,12 @@ function getIndexOfCiphered(alphabet: string[], letter: string, shift: number) {
   const originalShift = shift + alphabet.indexOf(letter)
   const exceedLimitOfAlphabet = originalShift > alphabet.length - 1
 
-  const realShift = exceedLimitOfAlphabet ? originalShift - alphabet.length : shift
+  const realShift =
+    originalShift < 0
+      ? alphabet.length + shift + alphabet.indexOf(letter)
+      : exceedLimitOfAlphabet
+      ? originalShift - alphabet.length
+      : originalShift
+
   return realShift
 }

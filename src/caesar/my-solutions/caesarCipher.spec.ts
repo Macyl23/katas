@@ -6,7 +6,7 @@ describe('Caesar Cipher', () => {
     expect(caesarCipher('a', 1)).toBe('b')
   })
   test('another one, given one letter, should return the letter plus the shift', () => {
-    expect(caesarCipher('a', 2)).toBe('c')
+    expect(caesarCipher('b', 2)).toBe('d')
   })
   test('given a character should return the same character', () => {
     expect(caesarCipher('!', 2)).toBe('!')
@@ -20,12 +20,16 @@ describe('Caesar Cipher', () => {
   test('another one, given a number greater than alphabet letters', () => {
     expect(caesarCipher('C', 24)).toBe('A')
   })
-  //   test('given a negative shift', () => {
-  //     expect(caesarCipher('A', -1)).toBe('Z')
-  //   })
-  //   test('another one, given a negative shift', () => {
-  //     expect(caesarCipher('C', -2)).toBe('A')
-  //   })
+  test('given a negative shift', () => {
+    expect(caesarCipher('A', -1)).toBe('Z')
+  })
+  test('another one, given a negative shift', () => {
+    expect(caesarCipher('C', -2)).toBe('A')
+  })
+  test('another one, given a negative shift', () => {
+    expect(caesarCipher('C', -3)).toBe('Z')
+  })
+
   //   test('given a sequence, with a letter and a character should return the ciphered text with character', () => {
   //     const sentence = 'I!'
   //     expect(caesarCipher(sentence, 1)).toBe('J!')
