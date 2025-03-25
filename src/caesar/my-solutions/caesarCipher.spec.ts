@@ -34,4 +34,10 @@ describe('Caesar Cipher', () => {
     const sentence = 'I!'
     expect(caesarCipher(sentence, 1)).toBe('J!')
   })
+
+  test('should work with the example from the README', () => {
+    expect(
+      caesarCipher('I should have known that you would have a perfect answer for me!!!', 1)
+    ).toBe('J ukszrk pjfp wacld kztn tkr unumf keak h xnbqqph pdjoxl ako kd!!!')
+  })
 })

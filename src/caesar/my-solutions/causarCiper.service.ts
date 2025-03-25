@@ -11,8 +11,8 @@ export function caesarCipher(str: string, shift: number) {
 
     const cipheredLetter =
       character === character.toLowerCase()
-        ? MINUS_ALPHABET[getIndexOfCiphered(MINUS_ALPHABET, character, shift)]
-        : UPPER_ALPHABET[getIndexOfCiphered(UPPER_ALPHABET, character, shift)]
+        ? MINUS_ALPHABET[getIndexOfCiphered(MINUS_ALPHABET, character, shift++)]
+        : UPPER_ALPHABET[getIndexOfCiphered(UPPER_ALPHABET, character, shift++)]
     return cipheredLetter
   })
 
@@ -27,7 +27,7 @@ function getIndexOfCiphered(alphabet: string[], letter: string, shift: number) {
     originalShift < 0
       ? alphabet.length + shift + alphabet.indexOf(letter)
       : exceedLimitOfAlphabet
-      ? originalShift - alphabet.length
+      ? originalShift - alphabet.length * Math.floor(originalShift / alphabet.length)
       : originalShift
 
   return realShift
