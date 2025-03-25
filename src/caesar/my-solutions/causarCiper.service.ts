@@ -1,18 +1,23 @@
+const MINUS_ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('')
+const UPPER_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
 export function caesarCipher(str: string, shift: number) {
-  const MINUS_ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  const HIGH_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-
-  const realShift =
-    shift > MINUS_ALPHABET.length - 1 ? shift - MINUS_ALPHABET.length + 1 : shift + 1
-
   if (!MINUS_ALPHABET.includes(str[0].toLowerCase())) {
     return str
   }
 
   const cipheredText =
     str[0] === str[0].toLowerCase()
-      ? MINUS_ALPHABET.slice(MINUS_ALPHABET.indexOf(str[0]), realShift)
-      : HIGH_ALPHABET.slice(HIGH_ALPHABET.indexOf(str[0]), realShift)
+      ? MINUS_ALPHABET[getIndexOfCiphered(MINUS_ALPHABET, str[0], shift)]
+      : UPPER_ALPHABET[getIndexOfCiphered(UPPER_ALPHABET, str[0], shift)]
 
-  return cipheredText[cipheredText.length - 1]
+  return cipheredText
+}
+
+function getIndexOfCiphered(alphabet: string[], letter: string, shift: number) {
+  const originalShift = shift + alphabet.indexOf(letter)
+  const exceedLimitOfAlphabet = originalShift > alphabet.length - 1
+
+  const realShift = exceedLimitOfAlphabet ? originalShift - alphabet.length : shift
+  return realShift
 }
